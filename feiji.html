@@ -1,102 +1,63 @@
-<!DOCTYPE html >
-  <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-    <title>Using MySQL and PHP with Google Maps</title>
-    <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
-  </head>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title>用户注册</title>
+<style type="text/css">
+    html{font-size:12px;}
+    fieldset{width:520px; margin: 0 auto;}
+    legend{font-weight:bold; font-size:14px;}
+    label{float:left; width:70px; margin-left:10px;}
+    .left{margin-left:80px;}
+    .input{width:150px;}
+    span{color: #666666;}
+</style>
+<script language=JavaScript>
+<!--
 
-<html>
-  <body>
-    <div id="map"></div>
+function InputCheck(LoginForm)
+{
+  if (LoginForm.username.value == "")
+  {
+    alert("请输入用户名!");
+    LoginForm.username.focus();
+    return (false);
+  }
 
-    <script>
-      var customLabel = {
-        restaurant: {
-          label: 'R'
-        },
-        bar: {
-          label: 'B'
-        }
-      };
+}
 
-        function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          center: new google.maps.LatLng(-33.863276, 151.207977),
-          zoom: 12
-        });
-        var infoWindow = new google.maps.InfoWindow;
+//-->
+</script>
+</head>
+<body>
+<div>
+<fieldset>
+<legend>用户注册</legend>
+<form name="LoginForm" method="post" action="reg.php" onSubmit="return InputCheck(this)">
+<p>
+<label for="username" class="label">用户名:</label>
+<input id="username" name="username" type="text" class="input" />
+<p/>
+<p>
+<label for="idcard" class="label">身份证号：</label>
+<input id="idcard" name="idcard" type="text" class="input" />
+<p/>
+<p>
+<label for="telphone" class="label">电话号码：</label>
+<input id="telphone" name="telphone" type="text" class="input" />
+<p/>
 
-          // Change this depending on the name of your PHP or XML file
-          downloadUrl('https://storage.googleapis.com/mapsdevsite/json/mapmarkers2.xml', function(data) {
-            var xml = data.responseXML;
-            var markers = xml.documentElement.getElementsByTagName('marker');
-            Array.prototype.forEach.call(markers, function(markerElem) {
-              var id = markerElem.getAttribute('id');
-              var name = markerElem.getAttribute('name');
-              var address = markerElem.getAttribute('address');
-              var type = markerElem.getAttribute('type');
-              var point = new google.maps.LatLng(
-                  parseFloat(markerElem.getAttribute('lat')),
-                  parseFloat(markerElem.getAttribute('lng')));
+<p>
+<label for="email" class="label">电子邮箱：</label>
+<input id="email" name="email" type="text" class="input" />
+<p/>
 
-              var infowincontent = document.createElement('div');
-              var strong = document.createElement('strong');
-              strong.textContent = name
-              infowincontent.appendChild(strong);
-              infowincontent.appendChild(document.createElement('br'));
-
-              var text = document.createElement('text');
-              text.textContent = address
-              infowincontent.appendChild(text);
-              var icon = customLabel[type] || {};
-              var marker = new google.maps.Marker({
-                map: map,
-                position: point,
-                label: icon.label
-              });
-              marker.addListener('click', function() {
-                infoWindow.setContent(infowincontent);
-                infoWindow.open(map, marker);
-              });
-            });
-          });
-        }
-
-
-
-      function downloadUrl(url, callback) {
-        var request = window.ActiveXObject ?
-            new ActiveXObject('Microsoft.XMLHTTP') :
-            new XMLHttpRequest;
-
-        request.onreadystatechange = function() {
-          if (request.readyState == 4) {
-            request.onreadystatechange = doNothing;
-            callback(request, request.status);
-          }
-        };
-
-        request.open('GET', url, true);
-        request.send(null);
-      }
-
-      function doNothing() {}
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsXjEuopZGwi7BaU5Yiu9CmTG-g_b7Aj0&callback=initMap">
-    </script>
-  </body>
+<p>
+<input type="submit" name="submit" value="  注 册 " class="left" />
+</p>
+</form>
+</fieldset>
+</div>
+</body>
 </html>
