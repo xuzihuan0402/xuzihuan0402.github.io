@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gbk" />
-<title>�û�ע��</title>
+<title>用户注册</title>
 <style type="text/css">
     html{font-size:12px;}
     fieldset{width:520px; margin: 0 auto;}
@@ -20,7 +20,7 @@ function InputCheck(LoginForm)
 {
   if (LoginForm.username.value == "")
   {
-    alert("�������û���!");
+    alert("请输入用户名!");
     LoginForm.username.focus();
     return (false);
   }
@@ -33,28 +33,28 @@ function InputCheck(LoginForm)
 <body>
 <div>
 <fieldset>
-<legend>�û�ע��</legend>
+<legend>用户注册</legend>
 <form name="LoginForm" method="post" action="reg.php" onSubmit="return InputCheck(this)">
 <p>
-<label for="username" class="label">�û���:</label>
+<label for="username" class="label">用户名:</label>
 <input id="username" name="username" type="text" class="input" />
 <p/>
 <p>
-<label for="idcard" class="label">����֤�ţ�</label>
+<label for="idcard" class="label">身份证号：</label>
 <input id="idcard" name="idcard" type="text" class="input" />
 <p/>
 <p>
-<label for="telphone" class="label">�绰���룺</label>
+<label for="telphone" class="label">电话号码：</label>
 <input id="telphone" name="telphone" type="text" class="input" />
 <p/>
 
 <p>
-<label for="email" class="label">�������䣺</label>
+<label for="email" class="label">电子邮箱：</label>
 <input id="email" name="email" type="text" class="input" />
 <p/>
 
 <p>
-<input type="submit" name="submit" value="  ע �� " class="left" />
+<input type="submit" name="submit" value="  注 册 " class="left" />
 </p>
 </form>
 </fieldset>
